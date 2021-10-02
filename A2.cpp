@@ -11,8 +11,8 @@
 #include <iostream>
 #include <stdlib.h>
 
-//Defines for the two valued to be deleted as per the problem statement. Change these to test different values. Add defines for testing more values. main function contents will change accordingly if the defines are increased or decreased. Reference can be taken from code in main function.
-#define VAL_1_TO_DELETE 80
+//Defines for the two values to be deleted as per the problem statement. Change these to test different values. Add defines for testing more values. main function contents will change accordingly if the defines are increased or decreased. Reference can be taken from code in main function.
+#define VAL_1_TO_DELETE 40
 #define VAL_2_TO_DELETE 20
 
 //The array given as per the problem statement. Make changes here and update the number of elements to change the input as desired.
@@ -245,7 +245,66 @@ void deleteBSTNode(int iVal)
         return;
     }
 
-    //The node to be deleted is not the leaf node. Process accordingly.
+    //Node to delete only has left child.
+    if((NULL == tpBSTNodeToDelete->right) && (NULL != tpBSTNodeToDelete->left))
+    {
+        //Root Node is the node to delete and it has only a left child.
+        if(pRoot == tpBSTNodeToDelete)
+        {
+            pRoot = tpBSTNodeToDelete->left;
+            delete tpBSTNodeToDelete;
+            tpBSTNodeToDelete = NULL;
+            return;
+        }
+
+        //If node to delete is the left child of the parent.
+        if(tpBSTSuccessorNodeParent->left == tpBSTNodeToDelete)
+        {
+            tpBSTSuccessorNodeParent->left = tpBSTNodeToDelete->left;
+            delete tpBSTNodeToDelete;
+            tpBSTNodeToDelete = NULL;
+        }
+
+        //If node to delete is the right child of the parent.
+        else if(tpBSTSuccessorNodeParent->right == tpBSTNodeToDelete)
+        {
+            tpBSTSuccessorNodeParent->right = tpBSTNodeToDelete->left;
+            delete tpBSTNodeToDelete;
+            tpBSTNodeToDelete = NULL;
+        }
+        return;
+    }
+
+    //Node to delete only has right child
+    if((NULL != tpBSTNodeToDelete->right) && (NULL == tpBSTNodeToDelete->left))
+    {
+        //Root Node is the node to delete and it has only a right child
+        if(pRoot == tpBSTNodeToDelete)
+        {
+            pRoot = tpBSTNodeToDelete->right;
+            delete tpBSTNodeToDelete;
+            tpBSTNodeToDelete = NULL;
+            return;
+        }
+
+        //If node to delete is the left child of the parent.
+        if(tpBSTSuccessorNodeParent->left == tpBSTNodeToDelete)
+        {
+            tpBSTSuccessorNodeParent->left = tpBSTNodeToDelete->right;
+            delete tpBSTNodeToDelete;
+            tpBSTNodeToDelete = NULL;
+        }
+
+        //If node to delete is the right child of the parent.
+        else if(tpBSTSuccessorNodeParent->right == tpBSTNodeToDelete)
+        {
+            tpBSTSuccessorNodeParent->right = tpBSTNodeToDelete->right;
+            delete tpBSTNodeToDelete;
+            tpBSTNodeToDelete = NULL;
+        }
+        return;
+    }
+
     //Initialize successor and successor parent node for using deletion by successor method.
     tpBSTSuccessorNode = tpBSTNodeToDelete;
     tpBSTSuccessorNodeParent = tpBSTSuccessorNode;
