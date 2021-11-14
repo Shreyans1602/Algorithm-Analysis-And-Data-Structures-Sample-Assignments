@@ -3,7 +3,7 @@
  * 
  * @paragraph: Code Description - This code is used to demonstrate DFS and BFS topological sort with cycle detection.
  * 
- * @paragraph: Problem Statement -  For the two given graphs (images1.png and images2.png): a.) Write a program to do DFS topological sort. Your program must be able to catch the loop. Run the program on the attached graphs. b.) Write a program to do BFS topological sort. Your program must be able to catch the loop. Run the program on the attached graphs. Submit screen shots of execution results. Submit the code.
+ * @paragraph: Problem Statement -  For the two given graphs (A5_images1.png and A5_images2.png): a.) Write a program to do DFS topological sort. Your program must be able to catch the loop. Run the program on the attached graphs. b.) Write a program to do BFS topological sort. Your program must be able to catch the loop. Run the program on the attached graphs. Submit screen shots of execution results. Submit the code.
  * 
  * @author: Shreyans Patel (SSP210009)
  */
